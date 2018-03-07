@@ -1,71 +1,56 @@
 # ng-modal
 
+A simple interface for creating layered modal dialogs in Angular 5.
+
 ## Installation
 
-To install this library, run:
-
+1. Install npm module:
 ```bash
-$ npm install ng-modal --save
+$ npm install @browninglogic/ng-modal --save
 ```
 
-## Consuming your library
-
-Once you have published your library to npm, you can import your library in any Angular application by running:
-
-```bash
-$ npm install ng-modal
-```
-
-and then from your Angular `AppModule`:
-
+2. Import ModalManagerModule
 ```typescript
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-
-// Import your library
-import { SampleModule } from 'ng-modal';
-
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
-
-    // Specify your library as an import
-    LibraryModule
+    ModalManagerModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
-Once your library is imported, you can use its components, directives and pipes in your Angular application:
+## Usage
 
-```xml
-<!-- You can now use your library component in app.component.html -->
-<h1>
-  {{title}}
-</h1>
-<sampleComponent></sampleComponent>
+Use the following syntax for declaring a modal-window component within your app
+
+```html
+<input type="button" (click)="myModal.show()" value="Show Modal" />
+
+<modal-window #myModal [allowClose]="true" [maxWidthPixels]="400" [widthPercentage]="80">
+  <h1 header>Header Text Goes Here</h1>
+  <div body>
+    <p>Body content goes here</p>
+    <input type="button" (click)="myModal.hide()" value="Hide Modal" />
+  </div>
+  <div footer>Footer content goes here</div>
+</modal-window>
 ```
+allowClose, maxWidthPixels, widthPercentage are all optional.
+* *allowClose* - Specifies whether the modal can be closed.  When set to true, an X
+is shown in the top-right corner, and the modal will close itself if you click on the X
+or click outside of the modal.  When set to false, no X is shown and the modal can only
+be closed programmatically.  Defaults to true.
+* *maxWidthPixels* - Optionally sets the max width in pixels of the modal window.
+* *widthPercentage* - Optionally sets the modal width in percentage.
+* When maxWidthPixels and widthPercentage are not provided, the modal automatically
+fits the width of its contents.
 
-## Development
-
-To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
-
-```bash
-$ npm run build
-```
-
-To lint all `*.ts` files:
-
-```bash
-$ npm run lint
-```
 
 ## License
 
