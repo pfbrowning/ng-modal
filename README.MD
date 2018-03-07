@@ -58,6 +58,7 @@ In order to demo the functonality:
 2. Clone the repo and navigate to its root folder
 3. Run the following:
 ```bash
+npm install
 npm run build
 npm run playground
 ```
