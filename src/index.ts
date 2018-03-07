@@ -1,35 +1,20 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SampleComponent } from './sample.component';
-import { SampleDirective } from './sample.directive';
-import { SamplePipe } from './sample.pipe';
-import { SampleService } from './sample.service';
-
-export * from './sample.component';
-export * from './sample.directive';
-export * from './sample.pipe';
-export * from './sample.service';
+import { ModalWindowComponent } from './components/modal-window.component';
+import { ModalManagerService } from './services/modal-manager.service';
 
 @NgModule({
   imports: [
     CommonModule
   ],
+  providers: [
+    ModalManagerService
+  ],
   declarations: [
-    SampleComponent,
-    SampleDirective,
-    SamplePipe
+    ModalWindowComponent
   ],
   exports: [
-    SampleComponent,
-    SampleDirective,
-    SamplePipe
+    ModalWindowComponent
   ]
 })
-export class SampleModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: SampleModule,
-      providers: [SampleService]
-    };
-  }
-}
+export class ModalManagerModule {}

@@ -1,0 +1,18 @@
+<div class="modalOverlay" (click)="onOverlayClicked($event)" [style.display]="visible ? 'block' : 'none'" [style.z-index]="zIndex">
+    <div class="modalWindow"
+        [style.width.%]="widthPercentage ? widthPercentage : undefined" 
+        [style.max-width.px]="maxWidthPixels ? maxWidthPixels : undefined">
+        
+        <div *ngIf="allowClose" (click)="hide()" class="modalCloseBtn">&times;</div>
+
+        <div>
+            <ng-content select="[header]"></ng-content>
+        </div>
+        <div>
+            <ng-content select="[body]"></ng-content>
+        </div>
+        <div>
+            <ng-content select="[footer]"></ng-content>
+        </div>
+    </div>
+</div>
