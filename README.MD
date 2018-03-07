@@ -51,6 +51,17 @@ be closed programmatically.  Defaults to true.
 * When maxWidthPixels and widthPercentage are not provided, the modal automatically
 fits the width of its contents.
 
+## Demo
+
+In order to demo the functonality:
+1. Instal node.js / npm if you haven't already
+2. Clone the repo and navigate to its root folder
+3. Run the following:
+```bash
+npm run build
+npm run playground
+```
+
 
 ## License
 
