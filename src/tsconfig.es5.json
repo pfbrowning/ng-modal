@@ -22,7 +22,7 @@
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
     "flatModuleOutFile": "ng-modal.js",
-    "flatModuleId": "ng-modal"
+    "flatModuleId": "@browninglogic/ng-modal"
   },
   "files": [
     "./index.ts"
