@@ -41,15 +41,6 @@ Use the following syntax for declaring a modal-window component within your app
   <div footer>Footer content goes here</div>
 </modal-window>
 ```
-```css
-/*
-Use a more specific CSS selector to override the 
-basic grey border with a black border
-*/
-div.modalWindow.sampleModal {
-    border-color: black;
-}
-```
 * *allowClose* (optional) - Specifies whether the modal can be closed.  When set to true, an X
 is shown in the top-right corner, and the modal will close itself if you click on the X
 or click outside of the modal.  When set to false, no X is shown and the modal can only
@@ -62,15 +53,49 @@ if you want the background overlay to use a different color or opacity, then tha
 be applied here.
 
 ## Styling
-Out of the box, the modal intentionally contains a minimal amount of styling: just enough to make the
-component presentable for demos.  It's fairly simple to apply your own styles using the modalClass and
-overlayClass input parameters.
+Out of the box, the modal intentionally contains just enough styling to make it presentable
+out of the box for demos, but not so much as to make it a pain to style around.  In other words, you can style it however you want if you need to conform it to your aesthetics, but you don't have to if you don't want to.  It's fairly simple to apply your own styles using the modalClass and overlayClass input parameters.
 
-If you want to override the basic existing styles, such as the border
-or padding on the modal window, then use a more specific selector in your stylesheet, as shown in 
+If you want to override the basic existing styles, such as the border or padding on the modal window, then use a more specific selector in your stylesheet, as shown in 
 the usage example.  For the purpose of overriding the basic styles, it's helpful to
 keep in mind that the modal window will always be a div with the 'modalWindow' class in addition
 to any user-specified classes
+
+The following styles apply to the "Usage" sample.  Note the input binding for the
+sampleModal input class.
+
+```css
+/*
+In order to set basic styles that aren't already applied, simply
+set them in a CSS class and then bind that class to the modalClass
+input property on the modal-window component.
+*/
+.sampleModal {
+  font-size:20px;
+}
+/*
+Use a more specific CSS selector in order to 
+override the existing styles such as border, 
+background, padding, and text-align.
+*/
+div.modalWindow.sampleModal {
+    border-color: black;
+}
+
+/*
+If you're applying styles from a component stylesheet, rather than
+from a global stylesheet, then apply the ::ng-deep combinator in order
+to apply your styles within the modal-window component.  This is deprecated
+and should be considered a temporary solution until we get updated marching 
+orders from the Angular overlords.  See:
+https://stackoverflow.com/questions/47024236/what-to-use-in-place-of-ng-deep
+https://hackernoon.com/the-new-angular-ng-deep-and-the-shadow-piercing-combinators-deep-and-drop-4b088dbe459
+https://angular.io/guide/component-styles#deprecated-deep--and-ng-deep
+*/
+::ng-deep .sampleModal {
+  color:blue;
+}
+```
 
 ## Demo
 

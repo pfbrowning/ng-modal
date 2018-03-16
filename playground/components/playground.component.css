@@ -1,7 +1,11 @@
->>> div.modalWindow.playgroundModal {
+.playgroundModal {
+font-size:20px;
+}
+
+div.modalWindow.playgroundModal {
     border-color: black;
 }
 
-/* >>> div.modalOverlay.playgroundOverlay {
-    background:orange;
+/* ::ng-deep .playgroundModal {
+color:blue;
 } */
