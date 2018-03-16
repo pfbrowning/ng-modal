@@ -1,7 +1,7 @@
 >>> .playgroundModal {
-    border-color: black;
+    border-color: black !important;
 }
 
 >>> .playgroundOverlay {
-    background:orange;
+    background:orange !important;
 }
