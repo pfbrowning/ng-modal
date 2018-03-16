@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { PlaygroundComponent } from './components/playground.component';
-import { ModalManagerModule }  from '../src/index';
+import { ModalManagerModule }  from '../dist';
 
 @NgModule({
   bootstrap: [ PlaygroundComponent ],
