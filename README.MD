@@ -32,7 +32,7 @@ Use the following syntax for declaring a modal-window component within your app
 ```html
 <input type="button" (click)="myModal.show()" value="Show Modal" />
 
-<modal-window #myModal [allowClose]="true">
+<modal-window #myModal [allowClose]="true" modalClass="sampleModal" overlayClass="sampleOverlay">
   <h1 header>Header Text Goes Here</h1>
   <div body>
     <p>Body content goes here</p>
@@ -41,13 +41,22 @@ Use the following syntax for declaring a modal-window component within your app
   <div footer>Footer content goes here</div>
 </modal-window>
 ```
+```css
+.sampleModal {
+    border-color: black !important;
+}
+
+.sampleOverlay {
+    background:orange !important;
+}
+```
 * *allowClose* (optional) - Specifies whether the modal can be closed.  When set to true, an X
 is shown in the top-right corner, and the modal will close itself if you click on the X
 or click outside of the modal.  When set to false, no X is shown and the modal can only
 be closed programmatically.  Defaults to true.
 * *modalClass* (optional) - Specifies css class(es) to apply to the modal window.  For example, 
-if you want to change the background color or specify a certain width, then that css would be 
-applied here.
+if you want to override the border styling, change the background color, or specify a certain 
+width, then that css would be applied here.
 * *overlayClass* (optional) - Specifies css class(es) to apply to the modal window.  For example,
 if you want the background overlay to use a different color or opacity, then that css would 
 be applied here.
@@ -65,6 +74,7 @@ In order to demo the functonality:
 3. Run the following:
 ```bash
 npm install
+npm run build
 npm run playground
 ```
 
