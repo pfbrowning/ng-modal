@@ -10,10 +10,10 @@ import 'rxjs/add/operator/filter';
 })
 
 export class ModalWindowComponent implements OnInit, OnDestroy {
-    //The user can optionally specify max width in pixels
-    @Input() maxWidthPixels : number;
-    //The user can optionally specify width as percentage
-    @Input() widthPercentage : number;
+    //Allow the user to specify custom CSS classes for the modal
+    @Input() modalClass : string = '';
+    //Allow the user to specify custom CSS classes for the overlay
+    @Input() overlayClass : string = '';
     //Should the user be able to manually close the window?
     @Input() allowClose : boolean = true;
     //Index of this modal on the global modal stack
