@@ -32,7 +32,7 @@ Use the following syntax for declaring a modal-window component within your app
 ```html
 <input type="button" (click)="myModal.show()" value="Show Modal" />
 
-<modal-window #myModal [allowClose]="true" modalClass="sampleModal" overlayClass="sampleOverlay">
+<modal-window #myModal [allowClose]="true" modalClass="sampleModal">
   <h1 header>Header Text Goes Here</h1>
   <div body>
     <p>Body content goes here</p>
@@ -42,12 +42,12 @@ Use the following syntax for declaring a modal-window component within your app
 </modal-window>
 ```
 ```css
-.sampleModal {
-    border-color: black !important;
-}
-
-.sampleOverlay {
-    background:orange !important;
+/*
+Use a more specific CSS selector to override the 
+basic grey border with a black border
+*/
+div.modalWindow.sampleModal {
+    border-color: black;
 }
 ```
 * *allowClose* (optional) - Specifies whether the modal can be closed.  When set to true, an X
@@ -65,6 +65,12 @@ be applied here.
 Out of the box, the modal intentionally contains a minimal amount of styling: just enough to make the
 component presentable for demos.  It's fairly simple to apply your own styles using the modalClass and
 overlayClass input parameters.
+
+If you want to override the basic existing styles, such as the border
+or padding on the modal window, then use a more specific selector in your stylesheet, as shown in 
+the usage example.  For the purpose of overriding the basic styles, it's helpful to
+keep in mind that the modal window will always be a div with the 'modalWindow' class in addition
+to any user-specified classes
 
 ## Demo
 
