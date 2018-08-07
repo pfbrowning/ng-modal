@@ -1,7 +1,8 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { ModalManagerService } from '../services/modal-manager.service';
 import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/filter';
+import { filter } from 'rxjs/operators';
+
 
 @Component({
     selector: 'nm-modal-window',
@@ -38,10 +39,10 @@ export class ModalWindowComponent implements OnInit, OnDestroy {
         so that this modal can accurately maintain its z-index
         with relation to other layered modal windows
         */
-        this.subIndexChanged = this.modalManagerService.modalIndexChanged
+        this.subIndexChanged = this.modalManagerService.modalIndexChanged.pipe(
             // We're selfish: we only care about changes to the modal's own index.
-            .filter(indexChange => indexChange[0] === this)
-            .subscribe(indexChange => this.onIndexChanged(indexChange[1]));
+            filter(indexChange => indexChange[0] === this)
+        ).subscribe(indexChange => this.onIndexChanged(indexChange[1]));
     }
 
     ngOnDestroy() {

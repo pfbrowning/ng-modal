@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./lib.component.scss']
 })
 export class LibComponent {
-  description = 'A simple, lightweight interface for creating layered modal dialogs in Angular 5';
+  description = 'A simple, lightweight interface for creating layered modal dialogs in Angular 6';
 }

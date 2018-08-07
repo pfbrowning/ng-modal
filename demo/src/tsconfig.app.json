@@ -6,7 +6,8 @@
     "module": "es2015",
     "types": [],
     "paths": {
-      "@angular/*": ["../node_modules/@angular/*"]
+      "@angular/*": ["../node_modules/@angular/*"],
+      "rjxs": ["../node_modules/rjxs"]
     }
   },
   "exclude": [

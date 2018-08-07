@@ -7,7 +7,7 @@
     "githubRepoName": "ng-modal",
     "projectName": "@browninglogic/ng-modal",
     "projectVersion": "1.0.0",
-    "projectDescription": "A simple, lightweight interface for creating layered modal dialogs in Angular 5",
+    "projectDescription": "A simple, lightweight interface for creating layered modal dialogs in Angular 6",
     "projectKeywords": [
       "ng",
       "angular",
@@ -16,12 +16,14 @@
       "dialog",
       "layered"
     ],
-    "ngVersion": "5.0.0",
+    "ngVersion": "6.0.0",
     "ngModules": [
       "core",
       "common"
     ],
-    "otherDependencies": [],
+    "otherDependencies": [
+      "rjxs"
+    ],
     "additionalPackageFiles": [],
     "dependenciesRange": "^",
     "ngPrefix": "nm",

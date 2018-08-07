@@ -27,7 +27,7 @@ describe('LibComponent', function () {
   it('should have expected <p> text', () => {
     fixture.detectChanges();
     const p = de.nativeElement;
-    const description = 'A simple, lightweight interface for creating layered modal dialogs in Angular 5';
+    const description = 'A simple, lightweight interface for creating layered modal dialogs in Angular 6';
     expect(p.textContent).toEqual(description);
   });
 });
