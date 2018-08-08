@@ -27,7 +27,7 @@ describe('Modal Manager Service', () => {
 
     it('should properly handle adding and removing a few layered modals', (done: any) => {
         // Ensure that the startingZIndex is as expected without being explicitly set
-        expect(modalManagerService.startingZIndex).toBe(100);
+        expect(modalManagerService.startingZIndex).toBe(1000);
 
         // Add the first modal and ensure that its index is 0
         expect(modalManagerService.push(modal1)).toBe(0);

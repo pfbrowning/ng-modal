@@ -64,9 +64,9 @@ describe('Modal Window Component', () => {
     it('should properly handle a simple show and hide', () => {
         modalInstance.show();
 
-        // Expect that the component is visible with a z-index of 100 after show
+        // Expect that the component is visible with a z-index of 1000 after show
         expect(modalInstance.visible).toBe(true);
-        expect(modalInstance.zIndex).toBe(100);
+        expect(modalInstance.zIndex).toBe(1000);
         expect(pushSpy).toHaveBeenCalledTimes(1);
 
         // Hide the component and ensure that all is as expected
@@ -82,7 +82,7 @@ describe('Modal Window Component', () => {
         modalInstance.show();
 
         expect(modalInstance.visible).toBe(true);
-        expect(modalInstance.zIndex).toBe(100);
+        expect(modalInstance.zIndex).toBe(1000);
 
         /*
         Ensure that the index is properly updated when modalIndexChanged
@@ -90,7 +90,7 @@ describe('Modal Window Component', () => {
         */
         modalManagerService.modalIndexChanged.emit([modalInstance, 4]);
         expect(onIndexChangedSpy).toHaveBeenCalledTimes(1);
-        expect(modalInstance.zIndex).toBe(104);
+        expect(modalInstance.zIndex).toBe(1004);
 
         /*
         Ensure that the index is NOT updated when modalIndexChanged is emitted
@@ -98,7 +98,7 @@ describe('Modal Window Component', () => {
         */
         modalManagerService.modalIndexChanged.emit([modal2, 17]);
         expect(onIndexChangedSpy).toHaveBeenCalledTimes(1);
-        expect(modalInstance.zIndex).toBe(104);
+        expect(modalInstance.zIndex).toBe(1004);
     });
 
     it('should properly handle a custom starting z-index', () => {
