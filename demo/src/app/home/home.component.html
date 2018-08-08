@@ -20,10 +20,11 @@
 </div>
 
 <section class="home">
-  <div class="container">
+	<div class="container">
+		<h1>Click The Button To Show A Modal</h1>
 		<input type="button" (click)="modal1.show()" value="Show Modal 1" />
 
-		<nm-modal-window #modal1 modalClass="playgroundModal" overlayClass="playgroundOverlay">
+		<nm-modal-window #modal1 modalClass="demoModal" overlayClass="demoOverlay">
 			<h1 header>You can put stuff in the header</h1>
 			<div body>
 				<p>Modal body paragraph text</p>
@@ -31,7 +32,7 @@
 			</div>
 			<div footer>You can also put stuff in the footer</div>
 		</nm-modal-window>
-		
+
 		<nm-modal-window #modal2>
 			<h1 header>Another Modal</h1>
 			<div body>
@@ -39,5 +40,5 @@
 				<input type="button" value="Close Me" (click)="modal2.hide()" />
 			</div>
 		</nm-modal-window>
-  </div>
+	</div>
 </section>
