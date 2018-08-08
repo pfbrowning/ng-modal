@@ -380,6 +380,9 @@ gulp.task('rollup-bundle', (cb) => {
       'rxjs/add/operator/first': 'Rx.Observable.prototype',
       'rxjs/add/operator/startWith': 'Rx.Observable.prototype',
       'rxjs/add/operator/switchMap': 'Rx.Observable.prototype',
+      
+      // rxjs 6
+      'rxjs/operators': 'Rx',
 
       // ATTENTION:
       // Add any other dependency or peer dependency of your library here
