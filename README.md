@@ -2,15 +2,13 @@
   <img height="256px" width="256px" style="text-align: center;" src="https://cdn.rawgit.com/pfbrowning/ng-modal/master/demo/src/assets/logo.svg">
 </p>
 
-# ng-modal - A simple, lightweight interface for creating layered modal dialogs in Angular 5
+# ng-modal - A simple, lightweight interface for creating layered modal dialogs in Angular 6
 
-[![npm version](https://badge.fury.io/js/ng-modal.svg)](https://badge.fury.io/js/ng-modal),
+[![npm version](https://badge.fury.io/js/%40browninglogic%2Fng-modal.svg)](https://badge.fury.io/js/%40browninglogic%2Fng-modal),
 [![Build Status](https://travis-ci.org/pfbrowning/ng-modal.svg?branch=master)](https://travis-ci.org/pfbrowning/ng-modal)
 [![Coverage Status](https://coveralls.io/repos/github/pfbrowning/ng-modal/badge.svg?branch=master)](https://coveralls.io/github/pfbrowning/ng-modal?branch=master)
 [![dependency Status](https://david-dm.org/pfbrowning/ng-modal/status.svg)](https://david-dm.org/pfbrowning/ng-modal)
 [![devDependency Status](https://david-dm.org/pfbrowning/ng-modal/dev-status.svg?branch=master)](https://david-dm.org/pfbrowning/ng-modal#info=devDependencies)
-
-TODO Update these
 
 ## Installation
 
@@ -64,7 +62,10 @@ be applied here.
 
 ## Styling
 Out of the box, the modal intentionally contains just enough styling to make it presentable
-out of the box for demos, but not so much as to make it a pain to style around.  In other words, you can style it however you want if you need to conform it to your aesthetics, but you don't have to if you don't want to.  It's fairly simple to apply your own styles using the modalClass and overlayClass input parameters.
+out of the box for demos, but not so much as to make it difficult to style around.  In other 
+words, you can style it however you want if you need to conform it to your aesthetics, but you 
+don't have to if you don't want to.  It's fairly simple to apply your own styles using the modalClass 
+and overlayClass input parameters.
 
 If you want to override the basic existing styles, such as the border or padding on the modal window, then use a more specific selector in your stylesheet, as shown in 
 the usage example.  For the purpose of overriding the basic styles, it's helpful to
@@ -95,9 +96,11 @@ div.modalWindow.sampleModal {
 /*
 If you're applying styles from a component stylesheet, rather than
 from a global stylesheet, then apply the ::ng-deep combinator in order
-to apply your styles within the modal-window component.  This is deprecated
-and should be considered a temporary solution until we get updated marching 
-orders from the Angular overlords.  See:
+to apply your styles within the modal-window component.
+The shadow-piercing operators were recently removed without replacement 
+in the evolving W3C spec.  This is an evolving topic and ng-deep is Angular's 
+answer to this for the time being until a clear migration path is available.
+Thus ng-deep is deprecated and should be considered a temporary solution.  See:
 https://stackoverflow.com/questions/47024236/what-to-use-in-place-of-ng-deep
 https://hackernoon.com/the-new-angular-ng-deep-and-the-shadow-piercing-combinators-deep-and-drop-4b088dbe459
 https://angular.io/guide/component-styles#deprecated-deep--and-ng-deep
@@ -108,17 +111,10 @@ https://angular.io/guide/component-styles#deprecated-deep--and-ng-deep
 ```
 
 ## Demo
+View it in action here: https://pfbrowning.github.io/ng-modal
 
-In order to demo the functonality:
-1. Instal node.js / npm if you haven't already
-2. Clone the repo and navigate to its root folder
-3. Run the following:
-```bash
-npm install
-npm run build
-npm run playground
-```
-
+## Documentation
+More detailed documentation can be found <a href="https://pfbrowning.github.io/ng-modal/doc/">here</a>.
 
 ## License
 
