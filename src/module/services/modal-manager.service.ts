@@ -8,24 +8,12 @@ import { ModalWindowComponent } from '../components/modal-window.component';
 */
 @Injectable()
 export class ModalManagerService {
+    /** Informs subscribers when the index of a modal on the stack changes */
     @Output() modalIndexChanged = new EventEmitter<[ModalWindowComponent, number]>();
+    /** Maintains the currently-displayed modal windows in order */
     private activeModals = new Array<ModalWindowComponent>();
-    private _startingZIndex = 100;
-
-    /**
-     * Returns the starting z-index so that the modal windows know where to put themselves
-     */
-    public get startingZIndex(): number {
-        return this._startingZIndex;
-    }
-
-    /*
-     * Allow the user to specify the starting z-index in case they have a reason
-     * to need to show a modal at a z-index higher than 100.
-    */
-    public set startingZIndex(value: number) {
-        this._startingZIndex = value;
-    }
+    /** Starting point for the z-index of the layered modal windows */
+    public startingZIndex = 1000;
 
     /**
      * Pushes the provided modal to the top of the stack, if it's not already there, and
@@ -34,7 +22,7 @@ export class ModalManagerService {
      */
     public push(modal: ModalWindowComponent): number {
         const modalIndex = this.activeModals.indexOf(modal);
-        // If the modal isn't already on the stack, then simply push it to the top.
+        // If the modal isn't already on the stack, then push it to the top.
         if (modalIndex === -1) {
             this.activeModals.push(modal);
             return this.activeModals.indexOf(modal);

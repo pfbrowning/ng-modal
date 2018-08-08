@@ -11,20 +11,20 @@ import { filter } from 'rxjs/operators';
 })
 
 export class ModalWindowComponent implements OnInit, OnDestroy {
-    // Allow the user to specify custom CSS classes for the modal
+    /** Custom CSS class(es) to apply to the modal*/
     @Input() modalClass = '';
-    // Allow the user to specify custom CSS classes for the overlay
+    /** Custom CSS class(es) to apply to the overlay*/
     @Input() overlayClass = '';
-    // Should the user be able to manually close the window?
+    /** Specifies whether the user should be able to manually close the window*/
     @Input() allowClose = true;
-    // Index of this modal on the global modal stack
+    /** Index of the modal on the global modal stack*/
     private modalIndex: number;
+    /** Subscription to index change notifications from the modal manager service*/
     private subIndexChanged: Subscription;
+    /** Visibility flag for internal use*/
     private _visible = false;
 
-    /**
-     * Reports the visibility status of the modal window
-     */
+    /** Reports the visibility status of the modal window*/
     public get visible(): boolean {
         return this._visible;
     }
@@ -40,7 +40,7 @@ export class ModalWindowComponent implements OnInit, OnDestroy {
         with relation to other layered modal windows
         */
         this.subIndexChanged = this.modalManagerService.modalIndexChanged.pipe(
-            // We're selfish: we only care about changes to the modal's own index.
+            // We only care about changes to the modal's own index.
             filter(indexChange => indexChange[0] === this)
         ).subscribe(indexChange => this.onIndexChanged(indexChange[1]));
     }
@@ -52,33 +52,26 @@ export class ModalWindowComponent implements OnInit, OnDestroy {
     }
 
     /**
-     * When the index changes, update it so that the corresponding z-index will be updated.
+     * Updates the local copy of the index when necessary so that the
+     * corresponding z-index will be updated in the template.
      * @param newIndex new index provided by the modal management service
      */
     onIndexChanged(newIndex: number) {
         this.modalIndex = newIndex;
     }
 
-    /**
-     * Layer the z-index according to the modal index
-     * reported by the modal manager so that more-recently-opened
-     * modals show on top of older modal instances.
-     */
+    /** Provides the z-index to be used in the template for layering the modal */
     public get zIndex(): number {
         return this.modalIndex != null ? this.modalManagerService.startingZIndex + this.modalIndex : null;
     }
 
-    /**
-     * Show the modal and register it with the modal manager
-    */
+    /** Shows the modal and registers it with the modal manager */
     public show(): void {
         this.modalIndex  = this.modalManagerService.push(this);
         this._visible = true;
     }
 
-    /**
-     * Hide the modal and de-register it with the modal manager
-    */
+    /** Hides the modal and de-registers it with the modal manager */
     public hide(): void {
         this.modalManagerService.removeModal(this);
         this._visible = false;
@@ -86,8 +79,9 @@ export class ModalWindowComponent implements OnInit, OnDestroy {
     }
 
     /**
-     * If the user clicked on the outside overlay and we're
-     * allowing closing, then close the modal.
+     * Handles the click event when a user clicks on the overlay.
+     * If the user clicked on the overlay and allowClose is enabled,
+     * then close the modal.
      * @param event The mouse event provided by the browser
      */
     public onOverlayClicked(event: MouseEvent): void {
