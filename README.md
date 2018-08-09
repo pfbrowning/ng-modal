@@ -19,6 +19,8 @@ $ npm install @browninglogic/ng-modal --save
 
 2. Import ModalManagerModule
 ```typescript
+import { ModalManagerModule } from '@browninglogic/ng-modal';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -32,6 +34,9 @@ $ npm install @browninglogic/ng-modal --save
 })
 export class AppModule {}
 ```
+## Upgrade Notes
+* As of version 2.0.0, Angular 6 is required.  If you need Angular 5 support,
+you can use version 1.0.0.
 
 ## Usage
 
