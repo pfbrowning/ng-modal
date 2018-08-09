@@ -30,6 +30,10 @@
     "demo": " gulp build:demo",
     "check-travis": " travis-status --repo=pfbrowning/ng-modal --branch=master --fail-pending || echo 'Not yet passing'"
   },
+  "dependencies": {
+    "@angular/common": "^6.0.0",
+    "@angular/core": "^6.0.0"
+  },
   "peerDependencies": {
     "@angular/common": "^6.0.0",
     "@angular/core": "^6.0.0"
