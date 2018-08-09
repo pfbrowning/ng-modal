@@ -539,7 +539,7 @@ gulp.task('build:demo-ssr', () => {
 });
 
 gulp.task('push:demo', () => {
-  return execCmd('ngh',`--dir ${config.outputDemoDir} --message="chore(demo): :rocket: deploy new version"`);
+  return execCmd('ngh',`--dir ${config.outputDemoDir} --email=pfbrowning943@yahoo.com --message="chore(demo): :rocket: deploy new version"`);
 });
 
 gulp.task('deploy:demo', (cb) => {
