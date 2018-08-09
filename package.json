@@ -1,7 +1,7 @@
 {
   "name": "@browninglogic/ng-modal",
   "description": "A simple, lightweight interface for creating layered modal dialogs in Angular 6",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/pfbrowning/ng-modal",
   "author": {
     "name": "Patrick Browning",
