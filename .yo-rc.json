@@ -31,6 +31,7 @@
     "useGreenkeeper": false,
     "useCompodoc": true,
     "enforceNgGitCommitMsg": true,
+    "skipGhReleasing": true,
     "exclusions": [
       "demo/src/jestGlobalMocks.ts",
       "demo/src/setupJest.ts",
