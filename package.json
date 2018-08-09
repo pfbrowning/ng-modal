@@ -1,7 +1,7 @@
 {
   "name": "@browninglogic/ng-modal",
   "description": "A simple, lightweight interface for creating layered modal dialogs in Angular 6",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/pfbrowning/ng-modal",
   "author": {
     "name": "Patrick Browning",
@@ -30,9 +30,9 @@
     "demo": " gulp build:demo",
     "check-travis": " travis-status --repo=pfbrowning/ng-modal --branch=master --fail-pending || echo 'Not yet passing'"
   },
-  "dependencies": {
-    "@angular/common": "6.0.0",
-    "@angular/core": "6.0.0"
+  "peerDependencies": {
+    "@angular/common": "^6.0.0",
+    "@angular/core": "^6.0.0"
   },
   "devDependencies": {
     "@angular/animations": "6.0.0",
