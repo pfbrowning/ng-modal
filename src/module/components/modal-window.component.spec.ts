@@ -15,6 +15,7 @@ describe('Modal Window Component', () => {
     let pushSpy: jasmine.Spy;
     let removeModalSpy: jasmine.Spy;
     let overlayDiv: any;
+    let modalWindowDiv: any;
     let modalCloseBtn;
 
     // Asynchronously fetch and compile the component
@@ -50,6 +51,7 @@ describe('Modal Window Component', () => {
 
         // Query for ui elements to manipulate
         overlayDiv = modalFixture.debugElement.query(By.css('.modalOverlay')).nativeElement;
+        modalWindowDiv = modalFixture.debugElement.query(By.css('.modalWindow')).nativeElement;
         modalCloseBtn = modalFixture.debugElement.query(By.css('.modalCloseBtn')).nativeElement;
     });
 
@@ -63,15 +65,20 @@ describe('Modal Window Component', () => {
 
     it('should properly handle a simple show and hide', () => {
         modalInstance.show();
+        modalFixture.detectChanges();
 
         // Expect that the component is visible with a z-index of 1000 after show
         expect(modalInstance.visible).toBe(true);
         expect(modalInstance.zIndex).toBe(1000);
+        expect(overlayDiv.style['z-index']).toBe('1000');
+        expect(overlayDiv.style.display).toBe('block');
         expect(pushSpy).toHaveBeenCalledTimes(1);
 
         // Hide the component and ensure that all is as expected
         modalInstance.hide();
+        modalFixture.detectChanges();
         expect(modalInstance.visible).toBe(false);
+        expect(overlayDiv.style.display).toBe('none');
         expect(modalInstance.zIndex).toBeNull();
         expect(removeModalSpy).toHaveBeenCalledTimes(1);
     });
@@ -80,64 +87,95 @@ describe('Modal Window Component', () => {
         const modal2 = new ModalWindowComponent(modalManagerService);
 
         modalInstance.show();
+        modalFixture.detectChanges();
 
         expect(modalInstance.visible).toBe(true);
         expect(modalInstance.zIndex).toBe(1000);
+        expect(overlayDiv.style['z-index']).toBe('1000');
+        expect(overlayDiv.style.display).toBe('block');
 
         /*
         Ensure that the index is properly updated when modalIndexChanged
         is emitted for this modal window
         */
         modalManagerService.modalIndexChanged.emit([modalInstance, 4]);
+        modalFixture.detectChanges();
         expect(onIndexChangedSpy).toHaveBeenCalledTimes(1);
         expect(modalInstance.zIndex).toBe(1004);
+        expect(overlayDiv.style['z-index']).toBe('1004');
+        expect(overlayDiv.style.display).toBe('block');
 
         /*
         Ensure that the index is NOT updated when modalIndexChanged is emitted
         for a different modal window
         */
         modalManagerService.modalIndexChanged.emit([modal2, 17]);
+        modalFixture.detectChanges();
         expect(onIndexChangedSpy).toHaveBeenCalledTimes(1);
         expect(modalInstance.zIndex).toBe(1004);
+        expect(overlayDiv.style['z-index']).toBe('1004');
+        expect(overlayDiv.style.display).toBe('block');
     });
 
     it('should properly handle a custom starting z-index', () => {
         modalManagerService.startingZIndex = 2000;
 
         modalInstance.show();
+        modalFixture.detectChanges();
 
         expect(modalInstance.visible).toBe(true);
         expect(modalInstance.zIndex).toBe(2000);
+        expect(overlayDiv.style['z-index']).toBe('2000');
+        expect(overlayDiv.style.display).toBe('block');
     });
 
     it('should close on overlay click when allowClose is true', () => {
         modalInstance.show();
+        modalFixture.detectChanges();
 
         // Check that the window is visible
         expect(modalInstance.visible).toBe(true);
+        expect(overlayDiv.style.display).toBe('block');
 
         // Click the overlay
         overlayDiv.dispatchEvent(new Event('click'));
+        modalFixture.detectChanges();
 
         // Check that the window was properly closed
         expect(hideSpy).toHaveBeenCalledTimes(1);
         expect(modalInstance.visible).toBe(false);
+        expect(overlayDiv.style.display).toBe('none');
     });
 
     it('should not close on overlay click when allowClose is false', () => {
         // Turn allowClose off before showing the window
         modalInstance.allowClose = false;
         modalInstance.show();
+        modalFixture.detectChanges();
 
         // Check that the window is visible
         expect(modalInstance.visible).toBe(true);
+        expect(overlayDiv.style.display).toBe('block');
 
         // Click the overlay
         overlayDiv.dispatchEvent(new Event('click'));
+        modalFixture.detectChanges();
 
         // Ensure that the window has not been closed
         expect(hideSpy).not.toHaveBeenCalled();
         expect(modalInstance.visible).toBe(true);
+        expect(overlayDiv.style.display).toBe('block');
+    });
+
+    it('should properly apply provided modalClass and overlayClass', () => {
+        // Apply custom CSS classes as input properties
+        modalInstance.overlayClass = "overlayDummyClass1 overlayDummyClass2";
+        modalInstance.modalClass = "modalDummyClass1 modalDummyClass2";
+        modalFixture.detectChanges();
+
+        // Ensure that the CSS is properly applied to the DOM
+        expect(overlayDiv.getAttribute('class')).toBe("modalOverlay overlayDummyClass1 overlayDummyClass2");
+        expect(modalWindowDiv.getAttribute('class')).toBe("modalWindow modalDummyClass1 modalDummyClass2");
     });
 });
 

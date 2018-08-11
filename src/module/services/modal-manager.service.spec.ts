@@ -50,6 +50,11 @@ describe('Modal Manager Service', () => {
         expect(modalIndexChangedSpy).toHaveBeenCalledWith([modal3, 1]);
         expect(modalIndexChangedSpy).toHaveBeenCalledTimes(2);
 
+        /* Remove modal1 again, although we know that it's no longer on the stack,
+        in order to ensure that the removeModal function gracefully handles the
+        "this modal isn't here" case. */
+        modalManagerService.removeModal(modal1);
+
         // Add modal4 to the top and ensure that its index is 2 as expected
         expect(modalManagerService.push(modal4)).toBe(2);
 
