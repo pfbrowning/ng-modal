@@ -27,8 +27,11 @@ export class ModalManagerService {
             this.activeModals.push(modal);
             return this.activeModals.indexOf(modal);
         } else if (modalIndex === this.activeModals.length - 1) {
+            // If the modal is already on the top, then don't do anything: simply return the index
             return modalIndex;
         } else {
+            /* If the modal is already on the stack, but not on the top, then remove it and
+            add it to the top. */
             this.removeModal(modal);
             this.activeModals.push(modal);
             return this.activeModals.indexOf(modal);
