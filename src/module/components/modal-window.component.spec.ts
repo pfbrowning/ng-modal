@@ -1,4 +1,5 @@
 import { TestBed, getTestBed, async, ComponentFixture } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { ModalManagerModule } from '../lib.module';
 import { ModalWindowComponent } from './modal-window.component';
@@ -16,7 +17,7 @@ describe('Modal Window Component', () => {
     let removeModalSpy: jasmine.Spy;
     let overlayDiv: any;
     let modalWindowDiv: any;
-    let modalCloseBtn;
+    let modalCloseBtn: DebugElement;
 
     // Asynchronously fetch and compile the component
     beforeEach(async(() => {
@@ -52,12 +53,12 @@ describe('Modal Window Component', () => {
         // Query for ui elements to manipulate
         overlayDiv = modalFixture.debugElement.query(By.css('.modalOverlay')).nativeElement;
         modalWindowDiv = modalFixture.debugElement.query(By.css('.modalWindow')).nativeElement;
-        modalCloseBtn = modalFixture.debugElement.query(By.css('.modalCloseBtn')).nativeElement;
     });
 
     it('should initialize properly in the standard case', () => {
         // Ensure that everything is as expected after a standard init
-        expect(modalInstance.allowClose).toBe(true);
+        expect(modalInstance.closeOnOverlayClick).toBe(true);
+        expect(modalInstance.showCloseButton).toBe(false);
         expect(modalInstance.visible).toBe(false);
         expect(modalInstance.zIndex).toBeNull();
         expect(onIndexChangedSpy).not.toHaveBeenCalled();
@@ -129,7 +130,7 @@ describe('Modal Window Component', () => {
         expect(overlayDiv.style.display).toBe('block');
     });
 
-    it('should close on overlay click when allowClose is true', () => {
+    it('should close on overlay click when closeOnOverlayClick is true', () => {
         modalInstance.show();
         modalFixture.detectChanges();
 
@@ -147,9 +148,9 @@ describe('Modal Window Component', () => {
         expect(overlayDiv.style.display).toBe('none');
     });
 
-    it('should not close on overlay click when allowClose is false', () => {
-        // Turn allowClose off before showing the window
-        modalInstance.allowClose = false;
+    it('should not close on overlay click when closeOnOverlayClick is false', () => {
+        // Turn closeOnOverlayClick off before showing the window
+        modalInstance.closeOnOverlayClick = false;
         modalInstance.show();
         modalFixture.detectChanges();
 
@@ -165,6 +166,46 @@ describe('Modal Window Component', () => {
         expect(hideSpy).not.toHaveBeenCalled();
         expect(modalInstance.visible).toBe(true);
         expect(overlayDiv.style.display).toBe('block');
+    });
+
+    it('should show the close button when showCloseButton is true', () => {
+        // Turn on showCloseButton and show the modal
+        modalInstance.showCloseButton = true;
+        modalInstance.show();
+        modalFixture.detectChanges();
+
+        // Check to ensure that the close button DOM element IS present
+        modalCloseBtn = modalFixture.debugElement.query(By.css('.modalCloseBtn'));
+        expect(modalCloseBtn.nativeElement).not.toBeNull();
+    });
+
+    it('should not show the close button when showCloseButton is false', () => {
+        // Turn off showCloseButton and show the modal
+        modalInstance.showCloseButton = false;
+        modalInstance.show();
+        modalFixture.detectChanges();
+
+        // Check to ensure that the close button DOM element is NOT present
+        modalCloseBtn = modalFixture.debugElement.query(By.css('.modalCloseBtn'));
+        expect(modalCloseBtn).toBeNull();
+    });
+
+    it('should close the modal when showCloseButton is true and the user clicks the close button', () => {
+        // Turn on showCloseButton and show the modal
+        modalInstance.showCloseButton = true;
+        modalInstance.show();
+        modalFixture.detectChanges();
+
+        // Check to ensure that the close button is present in the DOM
+        expect(overlayDiv.style.display).toBe('block');
+
+        // Simulate a click on the overlay div
+        modalCloseBtn = modalFixture.debugElement.query(By.css('.modalCloseBtn'));
+        modalCloseBtn.nativeElement.dispatchEvent(new Event('click'));
+        modalFixture.detectChanges();
+
+        // Check to ensure that the close button is no longer visible
+        expect(overlayDiv.style.display).toBe('none');
     });
 
     it('should properly apply provided modalClass and overlayClass', () => {

@@ -15,8 +15,10 @@ export class ModalWindowComponent implements OnInit, OnDestroy {
     @Input() modalClass = '';
     /** Custom CSS class(es) to apply to the overlay*/
     @Input() overlayClass = '';
-    /** Specifies whether the user should be able to manually close the window*/
-    @Input() allowClose = true;
+    /** Specifies whether the modal will close if the user clicks on the surrounding overlay */
+    @Input() closeOnOverlayClick = true;
+    /** Specifies whether to show the built-in close button */
+    @Input() showCloseButton = false;
     /** Index of the modal on the global modal stack*/
     private modalIndex: number;
     /** Subscription to index change notifications from the modal manager service*/
@@ -80,12 +82,12 @@ export class ModalWindowComponent implements OnInit, OnDestroy {
 
     /**
      * Handles the click event when a user clicks on the overlay.
-     * If the user clicked on the overlay and allowClose is enabled,
+     * If the user clicked on the overlay and closeOnOverlayClick is enabled,
      * then close the modal.
      * @param event The mouse event provided by the browser
      */
     public onOverlayClicked(event: MouseEvent): void {
-        if ((<HTMLElement>event.target).classList.contains('modalOverlay') && this.allowClose) {
+        if ((<HTMLElement>event.target).classList.contains('modalOverlay') && this.closeOnOverlayClick) {
             this.hide();
         }
     }
