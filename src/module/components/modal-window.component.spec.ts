@@ -218,6 +218,14 @@ describe('Modal Window Component', () => {
         expect(overlayDiv.getAttribute('class')).toBe("modalOverlay overlayDummyClass1 overlayDummyClass2");
         expect(modalWindowDiv.getAttribute('class')).toBe("modalWindow modalDummyClass1 modalDummyClass2");
     });
+
+    it('should unsubscribe the subIndexChanged subscription on destroy without erroring out', () => {
+        // Init the test component
+        modalFixture.detectChanges();
+
+        // Destroy the test component to ensure that no error is thrown
+        modalFixture.destroy();
+    });
 });
 
 
