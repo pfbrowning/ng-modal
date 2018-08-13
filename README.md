@@ -88,7 +88,10 @@ Use the following syntax for declaring a modal-window component within your app
 
 <nm-modal-window #customStylingExample modalClass="customStylingModal" overlayClass="customStylingOverlay">
   <div body>
-    <p>This modal uses custom styling to change the border color of the modal window and the opacity of the overlay.</p>
+    <p>
+      This modal uses custom styling to change the border color of the modal window, 
+      the opacity of the overlay, and the font color.
+    </p>
   </div>
 </nm-modal-window>
 ```
