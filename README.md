@@ -35,6 +35,8 @@ import { ModalManagerModule } from '@browninglogic/ng-modal';
 export class AppModule {}
 ```
 ## Upgrade Notes
+* As of version 2.1.0, the `allowClose` property has been removed in favor of 
+`closeOnOverlayClick` and `showCloseButton`.  See the usage section for details.
 * As of version 2.0.0, Angular 6 is required.  If you need Angular 5 support,
 you can use version 1.0.0.
 
@@ -43,21 +45,57 @@ you can use version 1.0.0.
 Use the following syntax for declaring a modal-window component within your app
 
 ```html
-<input type="button" (click)="myModal.show()" value="Show Modal" />
-
-<modal-window #myModal [allowClose]="true" modalClass="sampleModal">
-  <h1 header>Header Text Goes Here</h1>
+<nm-modal-window #layeredExample1>
+  <h1 header>You can put stuff in the header</h1>
   <div body>
-    <p>Body content goes here</p>
-    <input type="button" (click)="myModal.hide()" value="Hide Modal" />
+    <p>Modal body paragraph text</p>
+    <input type="button" value="Show Another Modal" (click)="layeredExample2.show()" />
   </div>
-  <div footer>Footer content goes here</div>
-</modal-window>
+  <div footer>You can also put stuff in the footer</div>
+</nm-modal-window>
+
+<nm-modal-window #layeredExample2>
+  <h1 header>Another Modal</h1>
+  <div body>
+    <p>I'm layered on top of the first modal!  Wow!</p>
+    <input type="button" value="Close Me" (click)="layeredExample2.hide()" />
+  </div>
+</nm-modal-window>
+
+<nm-modal-window #closeOnOverlayClickExample [closeOnOverlayClick]="true" [showCloseButton]="false">
+  <div body>
+    <p>This modal doesn't show a close button, but it will close if you click on the grey overlay.</p>
+  </div>
+</nm-modal-window>
+
+<nm-modal-window #closeButtonExample [closeOnOverlayClick]="false" [showCloseButton]="true">
+  <div body>
+    <p>This modal shows a close button, but it will not close if you click on the grey overlay.</p>
+  </div>
+</nm-modal-window>
+
+<nm-modal-window #onlyCloseProgrammaticallyExample [closeOnOverlayClick]="false" [showCloseButton]="false">
+  <div body>
+    <p>
+      This modal doesn't show a close button and it will not close if you click on the grey overlay.
+      It will only close if you call modalInstance.hide() on the component instance.  This is useful
+      if you want to implement your own close button or lock the screen to prevent the user
+      from interacting with the page behind the modal.
+    </p>
+    <input type="button" value="Close Me" (click)="onlyCloseProgrammaticallyExample.hide()" />
+  </div>
+</nm-modal-window>
+
+<nm-modal-window #customStylingExample modalClass="customStylingModal" overlayClass="customStylingOverlay">
+  <div body>
+    <p>This modal uses custom styling to change the border color of the modal window and the opacity of the overlay.</p>
+  </div>
+</nm-modal-window>
 ```
-* *allowClose* (optional) - Specifies whether the modal can be closed.  When set to true, an X
-is shown in the top-right corner, and the modal will close itself if you click on the X
-or click outside of the modal.  When set to false, no X is shown and the modal can only
-be closed programmatically.  Defaults to true.
+* *closeOnOverlayClick* (optional) - Specifies whether the modal will close itself when you
+click outside of the modal.  Defaults to true.
+* *showCloseButton* (optional) - Specifies whether to show a close button in the top right corner
+of the window.  Defaults to false.
 * *modalClass* (optional) - Specifies css class(es) to apply to the modal window.  For example, 
 if you want to override the border styling, change the background color, or specify a certain 
 width, then that css would be applied here.
@@ -72,46 +110,55 @@ words, you can style it however you want if you need to conform it to your aesth
 don't have to if you don't want to.  It's fairly simple to apply your own styles using the modalClass 
 and overlayClass input parameters.
 
-If you want to override the basic existing styles, such as the border or padding on the modal window, then use a more specific selector in your stylesheet, as shown in 
-the usage example.  For the purpose of overriding the basic styles, it's helpful to
-keep in mind that the modal window will always be a div with the 'modalWindow' class in addition
-to any user-specified classes
+If you want to override the basic existing styles, such as the border or padding on the modal window, 
+then use a more specific selector in your stylesheet, as shown in the example.  For the purpose 
+of overriding the basic styles, it's helpful to keep in mind that the modal window will always be a 
+div with the 'modalWindow' class in addition to any user-specified classes
 
 The following styles apply to the "Usage" sample.  Note the input binding for the
-sampleModal input class.
+customStylingModal input class.
 
+### Global Styles
 ```css
 /*
 In order to set basic styles that aren't already applied, simply
 set them in a CSS class and then bind that class to the modalClass
 input property on the modal-window component.
 */
-.sampleModal {
-  font-size:20px;
+.customStylingModal {
+    font-size:20px;
 }
+
 /*
 Use a more specific CSS selector in order to 
 override the existing styles such as border, 
 background, padding, and text-align.
 */
-div.modalWindow.sampleModal {
+div.modalWindow.customStylingModal {
     border-color: black;
 }
 
+div.modalOverlay.customStylingOverlay {
+    background: rgba(0, 0, 0, 0.7);
+}
+```
+### Component Styles
+```css
 /*
 If you're applying styles from a component stylesheet, rather than
-from a global stylesheet, then apply the ::ng-deep combinator in order
-to apply your styles within the modal-window component.
-The shadow-piercing operators were recently removed without replacement 
-in the evolving W3C spec.  This is an evolving topic and ng-deep is Angular's 
-answer to this for the time being until a clear migration path is available.
-Thus ng-deep is deprecated and should be considered a temporary solution.  See:
+from a global stylesheet, then apply the ::ng-deep combinator in order to apply 
+your styles within the modal-window component.  The shadow-piercing operators 
+were recently removed without replacement in the evolving W3C spec.  This is an 
+evolving topic and ng-deep is Angular's answer to this for the time being, although 
+it's marked as deprecated and thus should be considered a temporary solution.  
+I would suggest using this with caution in case the Angular team removes ng-deep 
+before a clear replacement comes around.  See:
 https://stackoverflow.com/questions/47024236/what-to-use-in-place-of-ng-deep
 https://hackernoon.com/the-new-angular-ng-deep-and-the-shadow-piercing-combinators-deep-and-drop-4b088dbe459
 https://angular.io/guide/component-styles#deprecated-deep--and-ng-deep
 */
-::ng-deep .sampleModal {
-  color:blue;
+::ng-deep .customStylingModal {
+    color:blue;
 }
 ```
 
