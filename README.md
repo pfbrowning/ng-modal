@@ -35,7 +35,7 @@ import { ModalManagerModule } from '@browninglogic/ng-modal';
 export class AppModule {}
 ```
 ## Upgrade Notes
-* As of version 2.1.0, the `allowClose` property has been removed in favor of 
+* As of version 3.0.0, the `allowClose` property has been removed in favor of 
 `closeOnOverlayClick` and `showCloseButton`.  See the usage section for details.
 * As of version 2.0.0, Angular 6 is required.  If you need Angular 5 support,
 you can use version 1.0.0.
