@@ -492,7 +492,7 @@ returns its index so that the component knows where to place itself via z-index<
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/module/services/modal-manager.service.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/module/services/modal-manager.service.ts:45</a></div>
                             </td>
                         </tr>
 
@@ -674,8 +674,11 @@ export class ModalManagerService {
             this.activeModals.push(modal);
             return this.activeModals.indexOf(modal);
         } else if (modalIndex &#x3D;&#x3D;&#x3D; this.activeModals.length - 1) {
+            // If the modal is already on the top, then don&#x27;t do anything: simply return the index
             return modalIndex;
         } else {
+            /* If the modal is already on the stack, but not on the top, then remove it and
+            add it to the top. */
             this.removeModal(modal);
             this.activeModals.push(modal);
             return this.activeModals.indexOf(modal);
