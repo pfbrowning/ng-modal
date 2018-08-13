@@ -12,6 +12,14 @@
     font-size:20px;
 }
 
-div.modalWindow.demoModal {
+::ng-deep div.modalWindow.customStylingModal {
     border-color: black;
+}
+
+::ng-deep div.modalOverlay.customStylingOverlay {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+ul.exampleList li {
+    list-style-type: none;
 }

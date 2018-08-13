@@ -21,23 +21,69 @@
 
 <section class="home">
 	<div class="container">
-		<h1>Click The Button To Show A Modal</h1>
-		<input type="button" (click)="modal1.show()" value="Show Modal 1" />
+		<ul class="exampleList">
+			<li>
+				<input type="button" (click)="layeredExample1.show()" value="Show Example 1" />
+			</li>
+			<li>
+				<input type="button" (click)="closeOnOverlayClickExample.show()" value="Show Example 2" />
+			</li>
+			<li>
+				<input type="button" (click)="closeButtonExample.show()" value="Show Example 3" />
+			</li>
+			<li>
+				<input type="button" (click)="onlyCloseProgrammaticallyExample.show()" value="Show Example 4" />
+			</li>
+			<li>
+				<input type="button" (click)="customStylingExample.show()" value="Show Example 5" />
+			</li>
+		</ul>
 
-		<nm-modal-window #modal1 modalClass="demoModal" overlayClass="demoOverlay">
+		<nm-modal-window #layeredExample1>
 			<h1 header>You can put stuff in the header</h1>
 			<div body>
 				<p>Modal body paragraph text</p>
-				<input type="button" value="Show Another" (click)="modal2.show()" />
+				<input type="button" value="Show Another Modal" (click)="layeredExample2.show()" />
 			</div>
 			<div footer>You can also put stuff in the footer</div>
 		</nm-modal-window>
+		
 
-		<nm-modal-window #modal2>
+		<nm-modal-window #layeredExample2>
 			<h1 header>Another Modal</h1>
 			<div body>
 				<p>I'm layered on top of the first modal!  Wow!</p>
-				<input type="button" value="Close Me" (click)="modal2.hide()" />
+				<input type="button" value="Close Me" (click)="layeredExample2.hide()" />
+			</div>
+		</nm-modal-window>
+
+		<nm-modal-window #closeOnOverlayClickExample [closeOnOverlayClick]="true" [showCloseButton]="false">
+			<div body>
+				<p>This modal doesn't show a close button, but it will close if you click on the grey overlay.</p>
+			</div>
+		</nm-modal-window>
+
+		<nm-modal-window #closeButtonExample [closeOnOverlayClick]="false" [showCloseButton]="true">
+			<div body>
+				<p>This modal shows a close button, but it will not close if you click on the grey overlay.</p>
+			</div>
+		</nm-modal-window>
+
+		<nm-modal-window #onlyCloseProgrammaticallyExample [closeOnOverlayClick]="false" [showCloseButton]="false">
+			<div body>
+				<p>
+					This modal doesn't show a close button and it will not close if you click on the grey overlay.
+					It will only close if you call modalInstance.hide() on the component instance.  This is useful
+					if you want to implement your own close button or lock the screen to prevent the user
+					from interacting with the page behind the modal.
+				</p>
+				<input type="button" value="Close Me" (click)="onlyCloseProgrammaticallyExample.hide()" />
+			</div>
+		</nm-modal-window>
+
+		<nm-modal-window #customStylingExample modalClass="customStylingModal" overlayClass="customStylingOverlay">
+			<div body>
+				<p>This modal uses custom styling to change the border color of the modal window and the opacity of the overlay.</p>
 			</div>
 		</nm-modal-window>
 	</div>
