@@ -18,10 +18,10 @@
       "dom"
     ],
     "paths": {
-      "ng-modal": [
+      "@browninglogic/ng-modal": [
         "dist/ng-modal"
       ],
-      "ng-modal/*": [
+      "@browninglogic/ng-modal/*": [
         "dist/ng-modal/*"
       ]
     }
