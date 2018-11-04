@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { ModalManagerService } from '../services/modal-manager.service';
-import { Subscription } from 'rxjs'
+import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 

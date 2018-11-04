@@ -1,7 +1,7 @@
 import { TestBed, getTestBed, async, ComponentFixture } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { ModalManagerModule } from '../lib.module';
+import { ModalManagerModule } from '../modal-manager.module';
 import { ModalWindowComponent } from './modal-window.component';
 import { ModalManagerService } from '../services/modal-manager.service';
 
@@ -210,13 +210,13 @@ describe('Modal Window Component', () => {
 
     it('should properly apply provided modalClass and overlayClass', () => {
         // Apply custom CSS classes as input properties
-        modalInstance.overlayClass = "overlayDummyClass1 overlayDummyClass2";
-        modalInstance.modalClass = "modalDummyClass1 modalDummyClass2";
+        modalInstance.overlayClass = 'overlayDummyClass1 overlayDummyClass2';
+        modalInstance.modalClass = 'modalDummyClass1 modalDummyClass2';
         modalFixture.detectChanges();
 
         // Ensure that the CSS is properly applied to the DOM
-        expect(overlayDiv.getAttribute('class')).toBe("modalOverlay overlayDummyClass1 overlayDummyClass2");
-        expect(modalWindowDiv.getAttribute('class')).toBe("modalWindow modalDummyClass1 modalDummyClass2");
+        expect(overlayDiv.getAttribute('class')).toBe('modalOverlay overlayDummyClass1 overlayDummyClass2');
+        expect(modalWindowDiv.getAttribute('class')).toBe('modalWindow modalDummyClass1 modalDummyClass2');
     });
 
     it('should unsubscribe the subIndexChanged subscription on destroy without erroring out', () => {

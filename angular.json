@@ -134,7 +134,7 @@
       "root": "projects/ng-modal",
       "sourceRoot": "projects/ng-modal/src",
       "projectType": "library",
-      "prefix": "lib",
+      "prefix": "nm",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

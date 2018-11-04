@@ -4,4 +4,4 @@
 
 export * from './lib/components/modal-window.component';
 export * from './lib/services/modal-manager.service';
-export * from './lib/modal-manager.module'
+export * from './lib/modal-manager.module';

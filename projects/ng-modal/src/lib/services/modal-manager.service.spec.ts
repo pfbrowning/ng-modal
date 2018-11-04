@@ -1,4 +1,4 @@
-import { ModalManagerModule } from '../lib.module';
+import { ModalManagerModule } from '../modal-manager.module';
 import { ModalWindowComponent } from '../components/modal-window.component';
 import { ModalManagerService } from './modal-manager.service';
 
