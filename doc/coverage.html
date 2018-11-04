@@ -30,49 +30,82 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content modules">
+               <div class="content coverage">
                    <div class="content-data">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 <ol class="breadcrumb">
-    <li>Modules</li>
+    <li>Documentation coverage</li>
 </ol>
-<div class="container-fluid modules">
-    <div class="row">
-            <div class="col-sm-4">
-                <div class="card card-module">
-                    <div class="card-header">
-                        <h4 class="card-title">ModalManagerModule</h4>
-                    </div>
-                    <div class="card-block">
-                                <p>
-                                    <object id="demo-svg" type="image/svg+xml" lazy="./modules/ModalManagerModule/dependencies.svg" style="width: 100%; height: 175px;">
-                                        Your browser does not support SVG
-                                    </object>
-                                </p>
-                        <footer class="text-center">
-                            <a href="./modules/ModalManagerModule.html" class="btn btn-default">Browse</a>
-                        </footer>
-                    </div>
-                </div>
-            </div>
-    </div>
+
+<div>
+    <img src="./images/coverage-badge-documentation.svg">
 </div>
 
+<table class="table table-bordered coverage" id="coverage-table">
+    <thead class="coverage-header">
+        <tr>
+            <th>File</th>
+            <th>Type</th>
+            <th>Identifier</th>
+            <th style="text-align:right" class="statements" data-sort-default>Statements</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="good">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ModalWindowComponent.html">projects/ng-modal/src/lib/components/modal-window.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                ModalWindowComponent
+            </td>
+            <td align="right" data-sort="68">
+                <span class="coverage-percent">68 %</span>
+                <span class="coverage-count">(11/16)</span>
+            </td>
+        </tr>
+        <tr class="very-good">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./injectables/ModalManagerService.html">projects/ng-modal/src/lib/services/modal-manager.service.ts</a>
+            </td>
+            <td>
+                injectable
+            </td>
+            <td>
+                ModalManagerService
+            </td>
+            <td align="right" data-sort="100">
+                <span class="coverage-percent">100 %</span>
+                <span class="coverage-count">(5/5)</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-
-
-
-
-
-
-
-
-
-
-
-
+<script src="js/libs/tablesort.min.js"></script>
+<script src="js/libs/tablesort.number.min.js"></script>
+<script>
+    new Tablesort(document.getElementById('coverage-table'));
+</script>
 
                    </div><div class="search-results">
     <div class="has-results">
@@ -90,8 +123,8 @@
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 0;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'modules';
-            var COMPODOC_CURRENT_PAGE_URL = 'modules.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'coverage';
+            var COMPODOC_CURRENT_PAGE_URL = 'coverage.html';
        </script>
 
        <script src="./js/libs/custom-elements.min.js"></script>
