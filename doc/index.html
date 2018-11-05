@@ -47,6 +47,7 @@
 <li><a href="https://www.npmjs.com/package/@angular/common">@angular/common</a> (^6.0.0)</li>
 <li><a href="https://www.npmjs.com/package/@angular/core">@angular/core</a> (^6.0.0)</li>
 </ul>
+<p>The library has been tested with both Angular 6 and 7, so you should be fine with either.</p>
 <h2 id="installation">Installation</h2>
 <ol>
 <li><p>Install npm module:</p>
@@ -69,6 +70,11 @@ import { ModalManagerModule } from &#39;@browninglogic/ng-modal&#39;;</p>
 })
 export class AppModule {}</p>
 <div><pre class="line-numbers"><code class="language-none">## Upgrade Notes
+* As of version 4.0.0, I&#39;ve renamed my CSS classes from camelCase to hyphen-case
+for readability and added prefixes for specificity.  As a result, if you were 
+previously referencing my modalOverlay, modalWindow, or modalCloseBtn classes 
+in your CSS, you&#39;ll want to rename those references to nm-modal-overlay, 
+nm-modal-window, and nm-modal-close-btn accordingly.
 * As of version 3.0.0, the `allowClose` property has been removed in favor of 
 `closeOnOverlayClick` and `showCloseButton`.  See the usage section for details.
 * As of version 2.0.0, Angular 6 is required.  If you need Angular 5 support,
@@ -120,7 +126,7 @@ Use the following syntax for declaring a modal-window component within your app
   &lt;/div&gt;
 &lt;/nm-modal-window&gt;
 
-&lt;nm-modal-window #customStylingExample modalClass=&quot;customStylingModal&quot; overlayClass=&quot;customStylingOverlay&quot;&gt;
+&lt;nm-modal-window #customStylingExample modalClass=&quot;custom-styling-modal&quot; overlayClass=&quot;custom-styling-overlay&quot;&gt;
   &lt;div body&gt;
     &lt;p&gt;
       This modal uses custom styling to change the border color of the modal window, 
@@ -148,16 +154,16 @@ and overlayClass input parameters.</p>
 <p>If you want to override the basic existing styles, such as the border or padding on the modal window, 
 then use a more specific selector in your stylesheet, as shown in the example.  For the purpose 
 of overriding the basic styles, it&#39;s helpful to keep in mind that the modal window will always be a 
-div with the &#39;modalWindow&#39; class in addition to any user-specified classes</p>
+div with the &#39;nm-modal-window&#39; class in addition to any user-specified classes</p>
 <p>The following styles apply to the &quot;Usage&quot; sample.  Note the input binding for the
-customStylingModal input class.</p>
+custom-styling-modal input class.</p>
 <h3 id="global-styles">Global Styles</h3>
 <div><pre class="line-numbers"><code class="language-css">/*
 In order to set basic styles that aren&#39;t already applied, simply
 set them in a CSS class and then bind that class to the modalClass
 input property on the modal-window component.
 */
-.customStylingModal {
+.custom-styling-modal {
     font-size:20px;
 }
 
@@ -166,11 +172,11 @@ Use a more specific CSS selector in order to
 override the existing styles such as border, 
 background, padding, and text-align.
 */
-div.modalWindow.customStylingModal {
+div.nm-modal-window.custom-styling-modal {
     border-color: black;
 }
 
-div.modalOverlay.customStylingOverlay {
+div.nm-modal-overlay.custom-styling-overlay {
     background: rgba(0, 0, 0, 0.7);
 }</code></pre></div><h3 id="component-styles">Component Styles</h3>
 <div><pre class="line-numbers"><code class="language-css">/*
@@ -186,7 +192,7 @@ https://stackoverflow.com/questions/47024236/what-to-use-in-place-of-ng-deep
 https://hackernoon.com/the-new-angular-ng-deep-and-the-shadow-piercing-combinators-deep-and-drop-4b088dbe459
 https://angular.io/guide/component-styles#deprecated-deep--and-ng-deep
 */
-::ng-deep .customStylingModal {
+::ng-deep .custom-styling-modal {
     color:blue;
 }</code></pre></div><h2 id="demo">Demo</h2>
 <p>View it in action here: <a href="https://pfbrowning.github.io/ng-modal">https://pfbrowning.github.io/ng-modal</a></p>

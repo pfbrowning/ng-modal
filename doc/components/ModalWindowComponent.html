@@ -1020,7 +1020,7 @@ export class ModalWindowComponent implements OnInit, OnDestroy {
      * @param event The mouse event provided by the browser
      */
     public onOverlayClicked(event: MouseEvent): void {
-        if ((&lt;HTMLElement&gt;event.target).classList.contains(&#x27;modalOverlay&#x27;) &amp;&amp; this.closeOnOverlayClick) {
+        if ((&lt;HTMLElement&gt;event.target).classList.contains(&#x27;nm-modal-overlay&#x27;) &amp;&amp; this.closeOnOverlayClick) {
             this.hide();
         }
     }
@@ -1029,9 +1029,9 @@ export class ModalWindowComponent implements OnInit, OnDestroy {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div [class]&#x3D;&quot;&#x27;modalOverlay &#x27; + overlayClass&quot; (click)&#x3D;&quot;onOverlayClicked($event)&quot; [style.display]&#x3D;&quot;visible ? &#x27;block&#x27; : &#x27;none&#x27;&quot; [style.z-index]&#x3D;&quot;zIndex&quot;&gt;
-    &lt;div [class]&#x3D;&quot;&#x27;modalWindow &#x27; + modalClass&quot;&gt;
-        &lt;div *ngIf&#x3D;&quot;showCloseButton&quot; (click)&#x3D;&quot;hide()&quot; class&#x3D;&quot;modalCloseBtn&quot;&gt;&amp;times;&lt;/div&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div [class]&#x3D;&quot;&#x27;nm-modal-overlay &#x27; + overlayClass&quot; (click)&#x3D;&quot;onOverlayClicked($event)&quot; [style.display]&#x3D;&quot;visible ? &#x27;block&#x27; : &#x27;none&#x27;&quot; [style.z-index]&#x3D;&quot;zIndex&quot;&gt;
+    &lt;div [class]&#x3D;&quot;&#x27;nm-modal-window &#x27; + modalClass&quot;&gt;
+        &lt;div *ngIf&#x3D;&quot;showCloseButton&quot; (click)&#x3D;&quot;hide()&quot; class&#x3D;&quot;nm-modal-close-btn&quot;&gt;&amp;times;&lt;/div&gt;
 
         &lt;div&gt;
             &lt;ng-content select&#x3D;&quot;[header]&quot;&gt;&lt;/ng-content&gt;
@@ -1071,7 +1071,7 @@ export class ModalWindowComponent implements OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div [class]="\'modalOverlay \' + overlayClass" (click)="onOverlayClicked($event)" [style.display]="visible ? \'block\' : \'none\'" [style.z-index]="zIndex">    <div [class]="\'modalWindow \' + modalClass">        <div *ngIf="showCloseButton" (click)="hide()" class="modalCloseBtn">&times;</div>        <div>            <ng-content select="[header]"></ng-content>        </div>        <div>            <ng-content select="[body]"></ng-content>        </div>        <div>            <ng-content select="[footer]"></ng-content>        </div>    </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div [class]="\'nm-modal-overlay \' + overlayClass" (click)="onOverlayClicked($event)" [style.display]="visible ? \'block\' : \'none\'" [style.z-index]="zIndex">    <div [class]="\'nm-modal-window \' + modalClass">        <div *ngIf="showCloseButton" (click)="hide()" class="nm-modal-close-btn">&times;</div>        <div>            <ng-content select="[header]"></ng-content>        </div>        <div>            <ng-content select="[body]"></ng-content>        </div>        <div>            <ng-content select="[footer]"></ng-content>        </div>    </div></div></div>'
     var COMPONENTS = [{'name': 'ModalWindowComponent', 'selector': 'nm-modal-window'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ModalWindowComponent'};
