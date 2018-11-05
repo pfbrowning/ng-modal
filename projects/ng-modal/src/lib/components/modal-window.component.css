@@ -1,4 +1,4 @@
-.modalOverlay {
+.nm-modal-overlay {
     position:fixed;
     left:0;
     top:0;
@@ -7,7 +7,7 @@
     background: rgba(0, 0, 0, 0.2);
 }
 
-.modalWindow {
+.nm-modal-window {
     position:fixed;
     border:2px solid grey;
     border-radius:15px;
@@ -20,7 +20,7 @@
     transform: translate(-50%,-50%);
 }
 
-.modalCloseBtn {
+.nm-modal-close-btn {
     position: absolute;
     right:3px;
     top:5px;
@@ -32,6 +32,6 @@
     line-height:23px;
 }
 
-.modalCloseBtn:hover {
+.nm-modal-close-btn:hover {
     color:black;
 }

@@ -87,7 +87,7 @@ export class ModalWindowComponent implements OnInit, OnDestroy {
      * @param event The mouse event provided by the browser
      */
     public onOverlayClicked(event: MouseEvent): void {
-        if ((<HTMLElement>event.target).classList.contains('modalOverlay') && this.closeOnOverlayClick) {
+        if ((<HTMLElement>event.target).classList.contains('nm-modal-overlay') && this.closeOnOverlayClick) {
             this.hide();
         }
     }

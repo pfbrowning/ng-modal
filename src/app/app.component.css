@@ -15,6 +15,6 @@ https://stackoverflow.com/questions/47024236/what-to-use-in-place-of-ng-deep
 https://hackernoon.com/the-new-angular-ng-deep-and-the-shadow-piercing-combinators-deep-and-drop-4b088dbe459
 https://angular.io/guide/component-styles#deprecated-deep--and-ng-deep
 */
-::ng-deep .customStylingModal {
+::ng-deep .custom-styling-modal {
     color:blue;
 }

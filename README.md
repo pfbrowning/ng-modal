@@ -38,6 +38,11 @@ import { ModalManagerModule } from '@browninglogic/ng-modal';
 export class AppModule {}
 ```
 ## Upgrade Notes
+* As of version 4.0.0, I've renamed my CSS classes from camelCase to hyphen-case
+for readability and added prefixes for specificity.  As a result, if you were 
+previously referencing my modalOverlay, modalWindow, or modalCloseBtn classes 
+in your CSS, you'll want to rename those references to nm-modal-overlay, 
+nm-modal-window, and nm-modal-close-btn accordingly.
 * As of version 3.0.0, the `allowClose` property has been removed in favor of 
 `closeOnOverlayClick` and `showCloseButton`.  See the usage section for details.
 * As of version 2.0.0, Angular 6 is required.  If you need Angular 5 support,
@@ -89,7 +94,7 @@ Use the following syntax for declaring a modal-window component within your app
   </div>
 </nm-modal-window>
 
-<nm-modal-window #customStylingExample modalClass="customStylingModal" overlayClass="customStylingOverlay">
+<nm-modal-window #customStylingExample modalClass="custom-styling-modal" overlayClass="custom-styling-overlay">
   <div body>
     <p>
       This modal uses custom styling to change the border color of the modal window, 
@@ -119,10 +124,10 @@ and overlayClass input parameters.
 If you want to override the basic existing styles, such as the border or padding on the modal window, 
 then use a more specific selector in your stylesheet, as shown in the example.  For the purpose 
 of overriding the basic styles, it's helpful to keep in mind that the modal window will always be a 
-div with the 'modalWindow' class in addition to any user-specified classes
+div with the 'nm-modal-window' class in addition to any user-specified classes
 
 The following styles apply to the "Usage" sample.  Note the input binding for the
-customStylingModal input class.
+custom-styling-modal input class.
 
 ### Global Styles
 ```css
@@ -131,7 +136,7 @@ In order to set basic styles that aren't already applied, simply
 set them in a CSS class and then bind that class to the modalClass
 input property on the modal-window component.
 */
-.customStylingModal {
+.custom-styling-modal {
     font-size:20px;
 }
 
@@ -140,11 +145,11 @@ Use a more specific CSS selector in order to
 override the existing styles such as border, 
 background, padding, and text-align.
 */
-div.modalWindow.customStylingModal {
+div.nm-modal-window.custom-styling-modal {
     border-color: black;
 }
 
-div.modalOverlay.customStylingOverlay {
+div.nm-modal-overlay.custom-styling-overlay {
     background: rgba(0, 0, 0, 0.7);
 }
 ```
@@ -163,7 +168,7 @@ https://stackoverflow.com/questions/47024236/what-to-use-in-place-of-ng-deep
 https://hackernoon.com/the-new-angular-ng-deep-and-the-shadow-piercing-combinators-deep-and-drop-4b088dbe459
 https://angular.io/guide/component-styles#deprecated-deep--and-ng-deep
 */
-::ng-deep .customStylingModal {
+::ng-deep .custom-styling-modal {
     color:blue;
 }
 ```

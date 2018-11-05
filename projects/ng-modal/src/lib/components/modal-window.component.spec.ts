@@ -51,8 +51,8 @@ describe('Modal Window Component', () => {
         modalFixture.detectChanges();
 
         // Query for ui elements to manipulate
-        overlayDiv = modalFixture.debugElement.query(By.css('.modalOverlay')).nativeElement;
-        modalWindowDiv = modalFixture.debugElement.query(By.css('.modalWindow')).nativeElement;
+        overlayDiv = modalFixture.debugElement.query(By.css('.nm-modal-overlay')).nativeElement;
+        modalWindowDiv = modalFixture.debugElement.query(By.css('.nm-modal-window')).nativeElement;
     });
 
     it('should initialize properly in the standard case', () => {
@@ -175,7 +175,7 @@ describe('Modal Window Component', () => {
         modalFixture.detectChanges();
 
         // Check to ensure that the close button DOM element IS present
-        modalCloseBtn = modalFixture.debugElement.query(By.css('.modalCloseBtn'));
+        modalCloseBtn = modalFixture.debugElement.query(By.css('.nm-modal-close-btn'));
         expect(modalCloseBtn.nativeElement).not.toBeNull();
     });
 
@@ -186,7 +186,7 @@ describe('Modal Window Component', () => {
         modalFixture.detectChanges();
 
         // Check to ensure that the close button DOM element is NOT present
-        modalCloseBtn = modalFixture.debugElement.query(By.css('.modalCloseBtn'));
+        modalCloseBtn = modalFixture.debugElement.query(By.css('.nm-modal-close-btn'));
         expect(modalCloseBtn).toBeNull();
     });
 
@@ -200,7 +200,7 @@ describe('Modal Window Component', () => {
         expect(overlayDiv.style.display).toBe('block');
 
         // Simulate a click on the overlay div
-        modalCloseBtn = modalFixture.debugElement.query(By.css('.modalCloseBtn'));
+        modalCloseBtn = modalFixture.debugElement.query(By.css('.nm-modal-close-btn'));
         modalCloseBtn.nativeElement.dispatchEvent(new Event('click'));
         modalFixture.detectChanges();
 
@@ -215,8 +215,8 @@ describe('Modal Window Component', () => {
         modalFixture.detectChanges();
 
         // Ensure that the CSS is properly applied to the DOM
-        expect(overlayDiv.getAttribute('class')).toBe('modalOverlay overlayDummyClass1 overlayDummyClass2');
-        expect(modalWindowDiv.getAttribute('class')).toBe('modalWindow modalDummyClass1 modalDummyClass2');
+        expect(overlayDiv.getAttribute('class')).toBe('nm-modal-overlay overlayDummyClass1 overlayDummyClass2');
+        expect(modalWindowDiv.getAttribute('class')).toBe('nm-modal-window modalDummyClass1 modalDummyClass2');
     });
 
     it('should unsubscribe the subIndexChanged subscription on destroy without erroring out', () => {
