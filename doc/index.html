@@ -49,15 +49,11 @@
 </ul>
 <p>The library has been tested with both Angular 6 and 7, so you should be fine with either.</p>
 <h2 id="installation">Installation</h2>
-<ol>
-<li><p>Install npm module:</p>
-<div><pre class="line-numbers"><code class="language-bash">$ npm install &#64;browninglogic/ng-modal --save</code></pre></div></li>
-<li><p>Import ModalManagerModule:
-<code>`</code>js
-import { ModalManagerModule } from &#39;@browninglogic/ng-modal&#39;;</p>
-</li>
-</ol>
-<p>@NgModule({
+<p>Install the npm module:</p>
+<div><pre class="line-numbers"><code class="language-bash">$ npm install &#64;browninglogic/ng-modal --save</code></pre></div><p>Then import ModalManagerModule:</p>
+<div><pre class="line-numbers"><code class="language-typescript">import { ModalManagerModule } from &#39;&#64;browninglogic/ng-modal&#39;;
+
+&#64;NgModule({
   declarations: [
     AppComponent
   ],
@@ -68,25 +64,21 @@ import { ModalManagerModule } from &#39;@browninglogic/ng-modal&#39;;</p>
   providers: [],
   bootstrap: [ AppComponent ]
 })
-export class AppModule {}</p>
-<div><pre class="line-numbers"><code class="language-none">
-## Upgrade Notes
-* As of version 4.0.0, I&#39;ve renamed my CSS classes from camelCase to hyphen-case
+export class AppModule {}</code></pre></div><h2 id="upgrade-notes">Upgrade Notes</h2>
+<ul>
+<li>As of version 4.0.0, I&#39;ve renamed my CSS classes from camelCase to hyphen-case
 for readability and added prefixes for specificity.  As a result, if you were 
 previously referencing my modalOverlay, modalWindow, or modalCloseBtn classes 
 in your CSS, you&#39;ll want to rename those references to nm-modal-overlay, 
-nm-modal-window, and nm-modal-close-btn accordingly.
-* As of version 3.0.0, the `allowClose` property has been removed in favor of 
-`closeOnOverlayClick` and `showCloseButton`.  See the usage section for details.
-* As of version 2.0.0, Angular 6 is required.  If you need Angular 5 support,
-you can use version 1.0.0.
-
-## Usage
-
-Use the following syntax for declaring a modal-window component within your app
-
-```html
-&lt;nm-modal-window #layeredExample1&gt;
+nm-modal-window, and nm-modal-close-btn accordingly.</li>
+<li>As of version 3.0.0, the <code>allowClose</code> property has been removed in favor of 
+<code>closeOnOverlayClick</code> and <code>showCloseButton</code>.  See the usage section for details.</li>
+<li>As of version 2.0.0, Angular 6 is required.  If you need Angular 5 support,
+you can use version 1.0.0.</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<p>Use the following syntax for declaring a modal-window component within your app</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;nm-modal-window #layeredExample1&gt;
   &lt;h1 header&gt;You can put stuff in the header&lt;/h1&gt;
   &lt;div body&gt;
     &lt;p&gt;Modal body paragraph text&lt;/p&gt;
