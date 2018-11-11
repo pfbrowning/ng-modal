@@ -10,10 +10,20 @@ to make them look a bit less cramped. */
     margin:0px 6px;
 }
 
-/* Hide the toolbar buttons on screens too small to display them. */
+/* For small screens */
 @media (max-width:550px) {
+    /* Hide the toolbar buttons */
     .mat-toolbar .mat-raised-button {
         display:none;
+    }
+    /* Disable the flex spacer so that it doesn't fill all remaining space 
+    and, by extension, so that we can center the title. */
+    .mat-toolbar .fill-remaining {
+        display: none;
+    }
+    /* Center the title */
+    .mat-toolbar .title {
+        margin: 0px auto;
     }
 }
 
