@@ -1,5 +1,5 @@
 <p align="center">
-  <img height="256px" width="256px" style="text-align: center;" src="https://cdn.rawgit.com/pfbrowning/ng-modal/master/demo/src/assets/logo.svg">
+  <img height="256px" width="256px" style="text-align: center;" src="https://cdn.rawgit.com/pfbrowning/ng-modal/master/src/assets/logo.svg">
 </p>
 
 # ng-modal - A simple, lightweight interface for creating layered modal dialogs in Angular 6+
@@ -23,7 +23,7 @@ $ npm install @browninglogic/ng-modal --save
 ```
 
 2. Import ModalManagerModule
-```typescript
+```javascript
 import { ModalManagerModule } from '@browninglogic/ng-modal';
 
 @NgModule({
