@@ -17,13 +17,13 @@ The library has been tested with both Angular 6 and 7, so you should be fine wit
 
 ## Installation
 
-1. Install npm module:
+Install the npm module:
 ```bash
 $ npm install @browninglogic/ng-modal --save
 ```
 
-2. Import ModalManagerModule
-```javascript
+Then import ModalManagerModule:
+```typescript
 import { ModalManagerModule } from '@browninglogic/ng-modal';
 
 @NgModule({
@@ -39,6 +39,7 @@ import { ModalManagerModule } from '@browninglogic/ng-modal';
 })
 export class AppModule {}
 ```
+
 ## Upgrade Notes
 * As of version 4.0.0, I've renamed my CSS classes from camelCase to hyphen-case
 for readability and added prefixes for specificity.  As a result, if you were 
