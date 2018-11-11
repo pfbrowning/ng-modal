@@ -1,29 +1,33 @@
+<mat-toolbar color="primary">
+  <span>Browninglogic Ng-Modal Demo</span>
+  <span class="fill-remaining"></span>
+  <a mat-raised-button color="primary" href="https://pfbrowning.github.io/ng-modal/doc/" target="_blank">Documentation</a>
+  <a mat-raised-button color="primary" href="https://github.com/pfbrowning/ng-modal" target="_blank">Github</a>
+</mat-toolbar>
+
 <div style="text-align:center">
-  <img width="300" alt="Angular Logo" src="assets/logo.svg">
-  <h1>
+  <img width="200" alt="Angular Logo" src="assets/logo.svg">
+  <h1 class="mat-h1">
     Welcome to the @browninglogic/ng-modal demo!
   </h1>
-  <p>
-    Click <a href="https://pfbrowning.github.io/ng-modal/doc/" target="_blank">here</a> to view the documentation or <a href="https://github.com/pfbrowning/ng-modal" target="_blank">here</a> to view the Github repo.
-  </p>
 </div>
 
 <section>
   <ul class="exampleList">
     <li>
-      <input type="button" (click)="layeredExample1.show()" value="Show Example 1" />
+      <button type="button" mat-raised-button color="primary" (click)="layeredExample1.show()">Show Example 1</button>
     </li>
     <li>
-      <input type="button" (click)="closeOnOverlayClickExample.show()" value="Show Example 2" />
+      <button type="button" mat-raised-button color="primary" (click)="closeOnOverlayClickExample.show()">Show Example 2</button>
     </li>
     <li>
-      <input type="button" (click)="closeButtonExample.show()" value="Show Example 3" />
+      <button type="button" mat-raised-button color="primary" (click)="closeButtonExample.show()">Show Example 3</button>
     </li>
     <li>
-      <input type="button" (click)="onlyCloseProgrammaticallyExample.show()" value="Show Example 4" />
+      <button type="button" mat-raised-button color="primary" (click)="onlyCloseProgrammaticallyExample.show()">Show Example 4</button>
     </li>
     <li>
-      <input type="button" (click)="customStylingExample.show()" value="Show Example 5" />
+      <button type="button" mat-raised-button color="primary" (click)="customStylingExample.show()">Show Example 5</button>
     </li>
   </ul>
 
@@ -31,7 +35,7 @@
     <h1 header>You can put stuff in the header</h1>
     <div body>
       <p>Modal body paragraph text</p>
-      <input type="button" value="Show Another Modal" (click)="layeredExample2.show()" />
+      <button type="button" mat-raised-button color="primary" (click)="layeredExample2.show()">Show Another Modal</button>
     </div>
     <div footer>You can also put stuff in the footer</div>
   </nm-modal-window>
@@ -40,7 +44,7 @@
     <h1 header>Another Modal</h1>
     <div body>
       <p>I'm layered on top of the first modal!  Wow!</p>
-      <input type="button" value="Close Me" (click)="layeredExample2.hide()" />
+      <button type="button" mat-raised-button color="primary" (click)="layeredExample2.hide()">Close Me</button>
     </div>
   </nm-modal-window>
 
@@ -64,7 +68,7 @@
         if you want to implement your own close button or lock the screen to prevent the user
         from interacting with the page behind the modal.
       </p>
-      <input type="button" value="Close Me" (click)="onlyCloseProgrammaticallyExample.hide()" />
+      <button type="button" mat-raised-button color="primary" (click)="onlyCloseProgrammaticallyExample.hide()">Close Me</button>
     </div>
   </nm-modal-window>
 

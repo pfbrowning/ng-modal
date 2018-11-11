@@ -1,5 +1,31 @@
+/* Set flex in order to right-align toolbar buttons as per
+https://material.angular.io/components/toolbar/overview */
+.fill-remaining {
+    flex: 1 1 auto;
+}
+
+/* Slightly increase the side margins on the toolbar buttons 
+to make them look a bit less cramped. */
+.mat-toolbar .mat-raised-button {
+    margin:0px 6px;
+}
+
+/* Hide the toolbar buttons on screens too small to display them. */
+@media (max-width:550px) {
+    .mat-toolbar .mat-raised-button {
+        display:none;
+    }
+}
+
+/* Display the list of example action buttons in a basic list without bullets. */
+.exampleList {
+    text-align: center;
+    padding:0px;
+}
+
 ul.exampleList li {
     list-style-type: none;
+    margin:5px;
 }
 
 /*
