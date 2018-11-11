@@ -52,8 +52,8 @@
 <ol>
 <li><p>Install npm module:</p>
 <div><pre class="line-numbers"><code class="language-bash">$ npm install &#64;browninglogic/ng-modal --save</code></pre></div></li>
-<li><p>Import ModalManagerModule
-<code>`</code>javascript
+<li><p>Import ModalManagerModule:
+<code>`</code>typescript
 import { ModalManagerModule } from &#39;@browninglogic/ng-modal&#39;;</p>
 </li>
 </ol>
@@ -69,7 +69,8 @@ import { ModalManagerModule } from &#39;@browninglogic/ng-modal&#39;;</p>
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}</p>
-<div><pre class="line-numbers"><code class="language-none">## Upgrade Notes
+<div><pre class="line-numbers"><code class="language-none">
+## Upgrade Notes
 * As of version 4.0.0, I&#39;ve renamed my CSS classes from camelCase to hyphen-case
 for readability and added prefixes for specificity.  As a result, if you were 
 previously referencing my modalOverlay, modalWindow, or modalCloseBtn classes 
