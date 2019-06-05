@@ -1,9 +1,9 @@
 {
   "name": "@browninglogic/ng-modal",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "peerDependencies": {
-    "@angular/common": "^6.0.0 || ^7.0.0",
-    "@angular/core": "^6.0.0 || ^7.0.0"
+    "@angular/common": "^6.0.0 || ^7.0.0 || ^8.0.0",
+    "@angular/core": "^6.0.0 || ^7.0.0 || ^8.0.0"
   },
   "description": "A simple, lightweight interface for creating layered modal dialogs in Angular 6+",
   "keywords": [
