@@ -15,7 +15,7 @@
     "compodoc-move": "mv documentation dist/ng-modal-demo/doc",
     "ghpages-compodoc-build-push": "npm run ghpages-build && npm run compodoc-generate && npm run compodoc-move && npm run ghpages-publish",
     "build-prod": "ng build --prod --aot",
-    "build-lib": "rm -rf ./dist/ng-modal && ng build ng-modal",
+    "build-lib": "rm -rf ./dist/ng-modal && ng build ng-modal --prod",
     "test-library": "ng test ng-modal",
     "test-library-coverage": "ng test ng-modal --source-map --code-coverage=true",
     "build-test-library-coverage": "npm run build-prod && npm run test-library-coverage",
@@ -23,7 +23,8 @@
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "copy-readme": "cp README.md dist/ng-modal",
     "npm-pack": "cd dist/ng-modal && npm pack",
-    "package": "npm run build-lib && npm run copy-readme && npm run npm-pack"
+    "package": "npm run build-lib && npm run copy-readme && npm run npm-pack",
+    "npm-publish": "cd dist/ng-modal && npm publish"
   },
   "private": true,
   "dependencies": {

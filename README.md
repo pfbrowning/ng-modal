@@ -10,10 +10,10 @@
 [![dependency Status](https://david-dm.org/pfbrowning/ng-modal/status.svg?path=projects%2Fng-modal)](https://david-dm.org/pfbrowning/ng-modal)
 
 ## Peer Dependencies
-* [@angular/common](https://www.npmjs.com/package/@angular/common) (^6.0.0, ^7.0.0, or ^8.0.0)
-* [@angular/core](https://www.npmjs.com/package/@angular/core) (^6.0.0, ^7.0.0, or ^8.0.0)
+* [@angular/common](https://www.npmjs.com/package/@angular/common) (^6.0.0, ^7.0.0, ^8.0.0, or ^9.0.0)
+* [@angular/core](https://www.npmjs.com/package/@angular/core) (^6.0.0, ^7.0.0, ^8.0.0, or ^9.0.0)
 
-The library has been tested with Angular 6, 7, and 8.
+The library has been tested with Angular 6, 7, 8, and 9.
 
 ## Installation
 
